@@ -1,55 +1,66 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Manifesto = () => {
     const containerRef = useRef(null);
-    const text = "We are digital natives embracing the creative freedom to build immersive experiences. We integrate, collaborate, and challenge the norms of web design. Our goal is not just to display content, but to evoke emotion and drive connection.";
-
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start 0.8", "center center"]
-    });
-
-    // Map scroll progress to color/opacity
-    // 0 -> start (gray), 1 -> end (white)
 
     return (
-        <section ref={containerRef} className="min-h-[50vh] flex flex-col justify-center items-center py-20 px-6 md:px-20 z-10 relative bg-black">
-            <div className="max-w-4xl text-center">
-                <h2 className="text-xs font-mono uppercase tracking-widest text-white/50 mb-10">Manifesto</h2>
+        <section id="manifesto" ref={containerRef} className="min-h-screen flex flex-col justify-between py-24 px-6 md:px-20 z-10 relative bg-transparent text-white overflow-hidden">
 
-                <p className="text-3xl md:text-5xl leading-tight font-display font-light tracking-tight flex flex-wrap justify-center gap-x-3">
-                    {text.split(" ").map((word, i) => {
-                        const start = i / text.split(" ").length;
-                        const end = start + (1 / text.split(" ").length);
-                        // Per-word opacity based on scroll
-                        // This is a bit complex for global scroll. 
-                        // Simpler approach: Map global scroll to opacity of the whole block or chunks.
-                        // But requirements said "as user scrolls down it fills up". 
-                        // Let's use opacity on the whole block based on scroll, OR word by word.
+            {/* Main Content */}
+            <div className="flex-1 flex flex-col justify-center items-center my-20 w-full">
 
-                        // Let's try a simpler reveal: The text is gray, and a gradient text mask moves? 
-                        // Or just changing color from gray to white.
+                <div className="max-w-6xl text-center leading-none tracking-tighter mix-blend-normal">
+                    {/* Main Title with Gradient */}
+                    <h2 className="text-6xl md:text-9xl font-oswald font-bold uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#E0E0E0] to-[#999999] mb-4">
+                        IMMERSIVE CODE
+                    </h2>
 
-                        return (
-                            <Word key={i} word={word} progress={scrollYProgress} range={[start * 0.5, start * 0.5 + 0.5]} />
-                        )
-                    })}
+                    {/* Subtitle with Hurricane Font & Gold */}
+                    <p className="font-hurricane text-[#D4AF37] text-4xl md:text-7xl mb-12">
+                        made with curiosity, caffeine, and an unhealthy respect for edge cases
+                    </p>
+
+                    {/* Body Text */}
+                    <div className="max-w-3xl mx-auto space-y-4 font-sans text-sm md:text-base text-[#E0E0E0]/80 leading-relaxed font-light tracking-wide">
+                        <p>I build things that feel like they belonged there all along — clean, purposeful, a little cheeky.</p>
+                        <p>I listen to users, translate their messy hopes into elegant flows, and then make the failure states secretly graceful.</p>
+                        <p>If a bug survives my tests, we both deserve a medal (or therapy).</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Footer / Description */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-20 border-t border-white/10 pt-16">
+                <div>
+                    <span className="font-mono text-[10px] uppercase opacity-60 mb-4 block text-[#D4AF37]">[01]</span>
+                    <h3 className="font-oswald uppercase text-3xl mb-4 text-[#D4AF37] tracking-wide">EXPERIENCED CRAFTSMANSHIP</h3>
+                    <p className="font-mono text-xs leading-relaxed opacity-70 uppercase max-w-sm text-[#E0E0E0]">
+                        I sweat the small stuff so the experience stays effortless: thoughtful APIs, readable code, and surprises that make people smile.
+                    </p>
+                </div>
+                <div className="text-right flex flex-col items-end">
+                    <span className="font-mono text-[10px] uppercase opacity-60 mb-4 block text-right w-full text-[#D4AF37]">[02]</span>
+                    <h3 className="font-oswald uppercase text-3xl mb-4 text-[#D4AF37] tracking-wide">CURIOUS, NOT CLEVER</h3>
+                    <p className="font-mono text-xs leading-relaxed opacity-70 uppercase max-w-sm text-right text-[#E0E0E0]">
+                        I favor useful innovation over clever tricks. Measure, iterate, ship — and always keep the rollback plan handy.
+                    </p>
+                </div>
+            </div>
+
+            {/* Bottom Tagline & Japanese Word with Lines */}
+            <div className="mt-20 flex flex-col items-center gap-10">
+                <p className="text-center font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] opacity-50 text-[#E0E0E0]">
+                    This is how I roll: human-first, unit-tested, and ready to refactor when the world (or product) insists.
                 </p>
+
+                <div className="w-full flex items-center justify-center gap-6 opacity-90">
+                    <div className="h-px bg-white/20 w-32 md:w-64"></div>
+                    <span className="font-japanese text-[#D4AF37] text-xl tracking-[0.5em]">信念</span>
+                    <div className="h-px bg-white/20 w-32 md:w-64"></div>
+                </div>
             </div>
         </section>
     );
 };
-
-const Word = ({ word, progress, range }) => {
-    const opacity = useTransform(progress, [range[0], range[1]], [0.3, 1]);
-    const color = useTransform(progress, [range[0], range[1]], ["#555555", "#FFFFFF"]);
-
-    return (
-        <motion.span style={{ color: color }} className="transition-colors duration-200">
-            {word}
-        </motion.span>
-    )
-}
 
 export default Manifesto;

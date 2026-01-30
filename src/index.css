@@ -5,6 +5,41 @@
   --color-brand-white: #ffffff;
   --font-display: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
+  --font-hindi: "Tiro Devanagari Hindi", serif;
+  --font-korean: "Nanum Myeongjo", serif;
+  --font-japanese: "Noto Serif JP", serif;
+  --font-corinthia: "Corinthia", cursive;
+  --font-oswald: "Oswald", sans-serif;
+  --font-hurricane: "Hurricane", cursive;
+}
+
+.font-hindi {
+  font-family: var(--font-hindi);
+}
+
+.font-korean {
+  font-family: var(--font-korean);
+}
+
+.font-japanese {
+  font-family: var(--font-japanese);
+}
+
+.font-corinthia {
+  font-family: var(--font-corinthia);
+}
+
+.font-oswald {
+  font-family: var(--font-oswald);
+}
+
+.font-hurricane {
+  font-family: var(--font-hurricane);
+}
+
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
 }
 
 @layer base {

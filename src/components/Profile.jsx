@@ -25,7 +25,7 @@ const Profile = () => {
     });
 
     return (
-        <section ref={containerRef} className="min-h-screen w-full flex items-center justify-center relative py-20 z-10">
+        <section id="profile" ref={containerRef} className="min-h-screen w-full flex items-center justify-center relative py-20 z-10">
             <div className="container mx-auto px-4 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
                 {/* Image Side */}

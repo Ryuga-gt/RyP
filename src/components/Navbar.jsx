@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Logo from './Logo';
 
 const Navbar = () => {
     const scrollToSection = (id) => {
@@ -12,23 +13,23 @@ const Navbar = () => {
 
     const links = [
         { name: "WORK", id: "works" },
-        { name: "MANIFESTO", id: "manifesto" },
         { name: "PROFILE", id: "profile" },
+        { name: "MANIFESTO", id: "manifesto" },
         { name: "CONTACT", id: "contact" }
     ];
 
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 flex justify-between items-start p-6 md:p-10 pointer-events-none mix-blend-difference text-white">
+        <nav className="fixed top-0 left-0 w-full z-50 flex justify-between items-start p-10 md:px-32 md:py-16 pointer-events-none mix-blend-difference text-white">
             {/* Logo / Brand - Top Left */}
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="pointer-events-auto cursor-pointer group"
+                className="pointer-events-auto cursor-pointer group w-48"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-                <div className="flex flex-col text-xs font-bold tracking-widest uppercase group-hover:opacity-70 transition-opacity">
-                    <span className="text-lg">ryuga dev</span>
+                <div className="group-hover:opacity-70 transition-opacity">
+                    <Logo />
                 </div>
             </motion.div>
 

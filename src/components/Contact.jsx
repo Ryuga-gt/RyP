@@ -27,7 +27,7 @@ const Contact = () => {
                 <div>
                     <h4 className="font-display text-xl mb-4">Socials</h4>
                     <ul className="space-y-2 opacity-60 font-mono text-xs uppercase">
-                        <li><a href="#" className="hover:text-black hover:opacity-100">LinkedIn</a></li>
+                        <li><a href="https://discord.com/users/451254880150224916" target="_blank" rel="noopener noreferrer" className="hover:text-black hover:opacity-100">Discord</a></li>
                         <li><a href="#" className="hover:text-black hover:opacity-100">GitHub</a></li>
                         <li><a href="#" className="hover:text-black hover:opacity-100">Twitter</a></li>
                     </ul>

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
 import Background from './components/Background';
+import Cursor from './components/Cursor';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -36,14 +37,15 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-transparent text-white min-h-screen selection:bg-white selection:text-black font-sans">
+    <div className="bg-transparent text-white min-h-screen selection:bg-white selection:text-black font-sans cursor-none">
+      <Cursor />
       <Background />
       <Navbar />
       <main className="relative z-10">
         <Hero />
         <Projects />
-        <Manifesto />
         <Profile />
+        <Manifesto />
         <Interests />
       </main>
 

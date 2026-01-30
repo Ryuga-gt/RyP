@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const phrases = [
-    "United, Unbound",
-    "Creative Developer",
-    "Visual Storyteller",
-    "Digital Experience"
+    <span key="1"><span className="font-corinthia text-6xl md:text-[5rem]">United</span> <span className="text-[#FF3333]">.</span> <span className="font-corinthia text-6xl md:text-[5rem]">Unbound</span></span>,
+    <span key="2"><span className="font-hindi text-4xl md:text-6xl">बुनियाद</span> <span className="text-[#FF3333] ">.</span> <span className="font-corinthia text-6xl md:text-[5rem]">Bytes</span></span>,
+    <span key="3"><span className="font-korean text-4xl md:text-6xl">인연</span> <span className="text-[#FF3333] ">.</span> <span className="font-corinthia text-6xl md:text-[5rem]">Interface</span></span>,
+    <span key="4"><span className="font-japanese text-4xl md:text-6xl">間</span> <span className="text-[#FF3333] ">.</span> <span className="font-corinthia text-6xl md:text-[5rem]">Minimalism</span></span>
 ];
 
 const Hero = () => {
@@ -14,7 +14,7 @@ const Hero = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex((prev) => (prev + 1) % phrases.length);
-        }, 3000);
+        }, 4000); // Slower interval
         return () => clearInterval(interval);
     }, []);
 
@@ -41,7 +41,7 @@ const Hero = () => {
                         initial={{ y: 50, opacity: 0, filter: 'blur(10px)' }}
                         animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
                         exit={{ y: -50, opacity: 0, filter: 'blur(10px)' }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                     >
                         {phrases[index]}
                     </motion.h1>
