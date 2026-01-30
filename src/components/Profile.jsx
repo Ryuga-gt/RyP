@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Plus, X } from 'lucide-react';
-import profileImg from '../assets/profile.png';
+import profileImg from '../assets/profile.avif';
 
 const Word = ({ word, progress, range }) => {
     const opacity = useTransform(progress, [range[0], range[1]], [0.3, 1]);

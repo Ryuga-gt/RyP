@@ -20,16 +20,28 @@ const Hero = () => {
 
     return (
         <section className="h-screen w-full relative overflow-hidden z-0 bg-black">
-            {/* Spline Background - Interactive */}
-            <div className="absolute inset-0 z-0 cursor-crosshair">
+            {/* Spline Background */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
                 <iframe
                     src='https://my.spline.design/particles-2fd28c88cb8aabaf9770dce1af66eb64/'
                     frameBorder='0'
                     width='100%'
                     height='100%'
                     title="Hero Background"
-                    className="w-full h-full"
+                    className="w-full h-full scale-110" // Scaled to hide the watermark
                 ></iframe>
+            </div>
+
+            {/* Interaction Blockers (to allow scrolling on edges but interaction in center) */}
+            <div className="absolute inset-0 z-1 pointer-events-none">
+                {/* Top Blocker */}
+                <div className="absolute top-0 left-0 w-full h-[15vh] bg-transparent pointer-events-auto" />
+                {/* Bottom Blocker */}
+                <div className="absolute bottom-0 left-0 w-full h-[15vh] bg-transparent pointer-events-auto" />
+                {/* Left Blocker */}
+                <div className="absolute top-0 left-0 w-[15vw] h-full bg-transparent pointer-events-auto" />
+                {/* Right Blocker */}
+                <div className="absolute top-0 right-0 w-[15vw] h-full bg-transparent pointer-events-auto" />
             </div>
 
             {/* Content Overlay */}

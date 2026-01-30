@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Assets
-import hogwartsImg from '../assets/hogwarts_legacy.jpg';
-import chessImg from '../assets/chess.jpg';
-import lichessImg from '../assets/lichess.org.png';
-import haikyuuImg from '../assets/haikyuu.jpg';
+import hogwartsImg from '../assets/hogwarts_legacy.avif';
+import chessImg from '../assets/chess.avif';
+import lichessImg from '../assets/lichess.org.avif';
+import haikyuuImg from '../assets/haikyuu.avif';
 import haikyuuVideo from '../assets/Haikyuu_edit.mp4';
-import harryPotterImg from '../assets/Harry Potter Wallpaper.jfif';
+import harryPotterImg from '../assets/Harry-Potter-Wallpaper.avif';
 
 import harryPotterSound from '../assets/harry_potter_sound.mp3';
 
@@ -38,7 +38,7 @@ const interests = [
         id: 3,
         title: 'Haikyuu',
         category: 'Manga',
-        status: 'Chapter 1100+',
+        status: 'Chapter 400+',
         hoverImage: haikyuuImg,
         detailVideo: haikyuuVideo,
         description: 'ooohh its niceeeeeeeee!!!',

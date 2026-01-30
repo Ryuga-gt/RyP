@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Cursor = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const cursorRef = useRef(null);
     const [isHovering, setIsHovering] = useState(false);
 
     useEffect(() => {
-        const updateMousePosition = (e) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
+        const moveCursor = (e) => {
+            if (cursorRef.current) {
+                cursorRef.current.style.transform = `translate3d(${e.clientX - 8}px, ${e.clientY - 8}px, 0)`;
+            }
         };
 
         const handleMouseOver = (e) => {
@@ -18,29 +20,20 @@ const Cursor = () => {
             }
         };
 
-        window.addEventListener('mousemove', updateMousePosition);
+        window.addEventListener('mousemove', moveCursor);
         window.addEventListener('mouseover', handleMouseOver);
 
         return () => {
-            window.removeEventListener('mousemove', updateMousePosition);
+            window.removeEventListener('mousemove', moveCursor);
             window.removeEventListener('mouseover', handleMouseOver);
         };
     }, []);
 
     return (
-        <motion.div
-            className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
-            animate={{
-                x: mousePosition.x - 8,
-                y: mousePosition.y - 8,
-                scale: isHovering ? 2.5 : 1,
-            }}
-            transition={{
-                type: "spring",
-                stiffness: 150,
-                damping: 15,
-                mass: 0.1
-            }}
+        <div
+            ref={cursorRef}
+            className={`fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference transition-transform duration-75 ease-out ${isHovering ? 'scale-[2.5]' : 'scale-100'}`}
+            style={{ willChange: 'transform' }}
         />
     );
 };
