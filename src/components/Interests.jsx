@@ -115,42 +115,34 @@ const Interests = () => {
         }
     };
 
-    const handleMouseEnter = (item) => {
-        if (item.hasSound) {
-            // Stop any fading or currently playing audio immediately
-            stopCurrentAudio();
 
-            const audio = new Audio(harryPotterSound);
-            audio.volume = 0.5;
-            audio.loop = true; // Loop while hovering
-            audio.play().catch(e => console.log('Audio play failed:', e));
-
-            audioRef.current = audio;
-        }
-    };
-
-    const handleMouseLeave = () => {
-        if (audioRef.current) {
-            const audio = audioRef.current;
-            // Keep playing for 2 seconds then stop
-            timeoutRef.current = setTimeout(() => {
-                // Simple fade out simulation could go here
-                audio.pause();
-                audio.currentTime = 0;
-                if (audioRef.current === audio) {
-                    audioRef.current = null;
-                }
-            }, 2000);
-        }
-    };
 
     const handleTileClick = (item) => {
+        if (item.hasSound) {
+            if (audioRef.current && !audioRef.current.paused) {
+                stopCurrentAudio();
+            } else {
+                stopCurrentAudio(); // Ensure previous is stopped
+                const audio = new Audio(harryPotterSound);
+                audio.volume = 0.5;
+                audio.loop = true;
+                audio.play().catch(e => console.log('Audio play failed:', e));
+                audioRef.current = audio;
+            }
+        }
+
         if (item.directLink) {
             window.open(item.directLink, '_blank');
         } else if (item.expandable) {
             setSelectedId(item.id);
         }
     };
+
+    React.useEffect(() => {
+        return () => {
+            stopCurrentAudio();
+        };
+    }, []);
 
     return (
         <section className="w-full py-40 bg-white/5 relative z-10 backdrop-blur-sm">
@@ -166,8 +158,6 @@ const Interests = () => {
                             key={item.id}
                             className="bg-black p-10 group cursor-pointer hover:bg-neutral-900 transition-colors relative h-80 flex flex-col justify-between overflow-hidden"
                             onClick={() => handleTileClick(item)}
-                            onMouseEnter={() => handleMouseEnter(item)}
-                            onMouseLeave={handleMouseLeave}
                         >
                             {/* Hover Image Background */}
                             {!item.noHoverImage && item.hoverImage && (

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const phrases = [
-    <span key="1"><span className="font-corinthia text-6xl md:text-[5rem]">United</span> <span className="text-[#FF3333]">.</span> <span className="font-corinthia text-6xl md:text-[5rem]">Unbound</span></span>,
-    <span key="2"><span className="font-hindi text-4xl md:text-6xl">बुनियाद</span> <span className="text-[#FF3333] ">.</span> <span className="font-corinthia text-6xl md:text-[5rem]">Bytes</span></span>,
-    <span key="3"><span className="font-korean text-4xl md:text-6xl">인연</span> <span className="text-[#FF3333] ">.</span> <span className="font-corinthia text-6xl md:text-[5rem]">Interface</span></span>,
-    <span key="4"><span className="font-japanese text-4xl md:text-6xl">間</span> <span className="text-[#FF3333] ">.</span> <span className="font-corinthia text-6xl md:text-[5rem]">Minimalism</span></span>
+    <span key="1"><span className="font-mono text-4xl md:text-[4rem] tracking-widest uppercase">United</span> <span className="text-[#FF3333]">.</span> <span className="font-corinthia text-4xl md:text-[6rem] tracking-widest">Unbound</span></span>,
+    <span key="2"><span className="font-hindi text-4xl md:text-6xl">बुनियाद</span> <span className="text-[#FF3333] ">.</span> <span className="font-mono text-4xl md:text-[4rem] tracking-widest uppercase">Bytes</span></span>,
+    <span key="3"><span className="font-korean text-4xl md:text-6xl">인연</span> <span className="text-[#FF3333] ">.</span> <span className="font-mono text-4xl md:text-[4rem] tracking-widest uppercase">Interface</span></span>,
+    <span key="4"><span className="font-japanese text-4xl md:text-6xl">間</span> <span className="text-[#FF3333] ">.</span> <span className="font-orbitron text-4xl md:text-[4rem] tracking-widest uppercase">Minimalism</span></span>
 ];
 
 const Hero = () => {

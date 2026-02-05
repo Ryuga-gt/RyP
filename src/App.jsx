@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import Lenis from 'lenis';
 import Background from './components/Background';
 import Cursor from './components/Cursor';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Projects from './components/Projects';
-import Manifesto from './components/Manifesto';
-import Profile from './components/Profile';
-import Interests from './components/Interests';
-import Contact from './components/Contact';
+
+// Lazy Load Heavy Components
+const Projects = React.lazy(() => import('./components/Projects'));
+const Manifesto = React.lazy(() => import('./components/Manifesto'));
+const Profile = React.lazy(() => import('./components/Profile'));
+const Interests = React.lazy(() => import('./components/Interests'));
+const Contact = React.lazy(() => import('./components/Contact'));
 
 function App() {
 
@@ -43,13 +45,17 @@ function App() {
       <Navbar />
       <main className="relative z-10">
         <Hero />
-        <Projects />
-        <Profile />
-        <Manifesto />
-        <Interests />
+        <Suspense fallback={<div className="h-screen w-full flex items-center justify-center text-white/20 font-mono uppercase tracking-widest text-xs">Loading Content...</div>}>
+          <Projects />
+          <Profile />
+          <Manifesto />
+          <Interests />
+        </Suspense>
       </main>
 
-      <Contact />
+      <Suspense fallback={null}>
+        <Contact />
+      </Suspense>
 
       {/* Simple Footer Credit */}
       <footer className="w-full py-10 relative z-10 text-center text-white/30 text-xs uppercase tracking-widest bg-brand-white text-brand-black">

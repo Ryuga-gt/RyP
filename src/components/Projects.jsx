@@ -10,9 +10,10 @@ const projects = [
     },
     {
         id: 2,
-        title: "NeuroFlow",
-        category: "AI Dashboard",
-        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop",
+        title: "Chess Eval",
+        category: "Chess Engine Analysis",
+        image: "/src/assets/chess_analysis.png",
+        link: "https://github.com/Ryuga-gt/chessgame-review"
     },
     {
         id: 3,
@@ -22,9 +23,10 @@ const projects = [
     },
     {
         id: 4,
-        title: "Orbit",
-        category: "Space Analytics",
-        image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2000&auto=format&fit=crop",
+        title: "PL Analytics",
+        category: "Football Data Science",
+        image: "/src/assets/football_analytics.png",
+        link: "https://github.com/Ryuga-gt/Football_Advanced_Stats_Index"
     }
 ];
 
@@ -36,6 +38,7 @@ const ProjectItem = ({ project, index }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            onClick={() => project.link ? window.open(project.link, "_blank") : null}
         >
             <motion.img
                 src={project.image}
