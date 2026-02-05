@@ -1,6 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// Assets
+import chessAnalysisImg from '../assets/chess_analysis.png';
+import footballAnalyticsImg from '../assets/football_analytics.png';
+
 const projects = [
     {
         id: 1,
@@ -12,7 +16,7 @@ const projects = [
         id: 2,
         title: "Chess Eval",
         category: "Chess Engine Analysis",
-        image: "/src/assets/chess_analysis.png",
+        image: chessAnalysisImg,
         link: "https://github.com/Ryuga-gt/chessgame-review"
     },
     {
@@ -25,7 +29,7 @@ const projects = [
         id: 4,
         title: "PL Analytics",
         category: "Football Data Science",
-        image: "/src/assets/football_analytics.png",
+        image: footballAnalyticsImg,
         link: "https://github.com/Ryuga-gt/Football_Advanced_Stats_Index"
     }
 ];
