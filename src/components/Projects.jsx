@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 // Assets
-import chessAnalysisImg from '../assets/chess_analysis.png';
+import chessAnalysisImg from '../assets/chess.avif'; // Optimized asset
 import footballAnalyticsImg from '../assets/football_analytics.png';
 
 const projects = [
@@ -47,6 +47,7 @@ const ProjectItem = ({ project, index }) => {
             <motion.img
                 src={project.image}
                 alt={project.title}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
             />
 

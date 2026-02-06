@@ -11,6 +11,17 @@ const phrases = [
 const Hero = () => {
     const [index, setIndex] = useState(0);
 
+    const [isSplineLoaded, setIsSplineLoaded] = useState(false);
+
+    useEffect(() => {
+        // Defer Spline loading to prioritize LCP/FCP
+        const timer = setTimeout(() => {
+            setIsSplineLoaded(true);
+        }, 1500); // 1.5s delay to clear main thread
+        return () => clearTimeout(timer);
+    }, []);
+
+    // Phrase rotation
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex((prev) => (prev + 1) % phrases.length);
@@ -21,15 +32,18 @@ const Hero = () => {
     return (
         <section className="h-screen w-full relative overflow-hidden z-0 bg-black">
             {/* Spline Background */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
-                <iframe
-                    src='https://my.spline.design/particles-2fd28c88cb8aabaf9770dce1af66eb64/'
-                    frameBorder='0'
-                    width='100%'
-                    height='100%'
-                    title="Hero Background"
-                    className="w-full h-full scale-110" // Scaled to hide the watermark
-                ></iframe>
+            <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+                {isSplineLoaded && (
+                    <iframe
+                        src='https://my.spline.design/particles-2fd28c88cb8aabaf9770dce1af66eb64/'
+                        frameBorder='0'
+                        width='100%'
+                        height='100%'
+                        title="Hero Background"
+                        loading="lazy"
+                        className="w-full h-full scale-110 fade-in duration-1000" // Scaled to hide the watermark
+                    ></iframe>
+                )}
             </div>
 
             {/* Interaction Blockers (to allow scrolling on edges but interaction in center) */}

@@ -45,6 +45,7 @@ const Navbar = () => {
                         <button
                             key={link.name}
                             onClick={() => scrollToSection(link.id)}
+                            aria-label={`Scroll to ${link.name} section`}
                             className="hover:text-gray-400 transition-colors py-1 text-right"
                         >
                             {link.name}
