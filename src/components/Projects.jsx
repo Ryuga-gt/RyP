@@ -23,14 +23,14 @@ const projects = [
         id: 3,
         title: "DefiPrime",
         category: "Fintech Platform",
-        image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2000&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1639762681485-074b7f93 8ba0?q=80&w=2000&auto=format&fit=crop",
     },
     {
         id: 4,
         title: "PL Analytics",
         category: "Football Data Science",
         image: footballAnalyticsImg,
-        link: "https://github.com/Ryuga-gt/Football_Advanced_Stats_Index"
+        link: "https://github.com/Ryuga-gt/xG_Lab"
     }
 ];
 
